@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        function saveUser()
+        {
+            var user = 
+            {
+                "_id" : null, 
+                "name" : $("#name").val(),
+                "login" : $("#login").val(),
+                "password" : $("#password").val()
+            }
+            
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8005/users/createUser?name=" + user.name + "&login=" + user.login + "&password=" + user.password,
+                contentType: "application/json; charset=utf-8",
+                crossDomain: true,
+                dataType: "json",
+                success: function (data) {
+                    console.log(data)
+                    alert("success");
+                },
+   
+                error: function (jqXHR, status) {
+                    console.log(jqXHR);
+                    alert('fail' + status.code);
+                }
+             });
+
+        }
+    </script>
+    <title>Create</title>
+</head>
+<body>
+    <input type="text" id="name" placeholder="NAME" />
+    <br />
+    <input type="text" id="login" placeholder="LOGIN" />
+    <br />
+    <input type="password" id="password" placeholder="PASSWORD" />
+    <br />
+    <input type="button" onclick="saveUser()" value="Save!" />
+
+
+</body>
+</html>

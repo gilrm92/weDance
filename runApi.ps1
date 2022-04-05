@@ -1,0 +1,1 @@
+C:/Python38/python.exe d:/Projects/WeDance/main.py
