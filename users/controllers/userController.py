@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Body, Depends, status
 from managers import dbManager
 
 from users.models.user import User
@@ -11,7 +11,7 @@ async def getUser(id):
     return user;
 
 @router.post("/createUser/", status_code=status.HTTP_201_CREATED)
-async def createUser(user: User = Depends(User)):
+async def createUser(user: User = Body(...)):
     dbManager.saveUser(user)
     return "Ok"
 

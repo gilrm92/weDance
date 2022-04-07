@@ -1,10 +1,10 @@
+from typing import Optional
 import uuid
-from pydantic import Field
+from pydantic import BaseModel, Field
 
 
-class User:
-    def __init__(self, name, login, password):
-        self._id = str(uuid.uuid4())
-        self.name = name
-        self.login = login
-        self.password = password
+class User(BaseModel):
+    id: Optional[str] = str(uuid.uuid4())
+    name: str
+    login: str
+    password: str
