@@ -1,5 +1,4 @@
 import mysql.connector
-import mysqlx
 
 def initDb():
     return  mysql.connector.connect(host="remotemysql.com", user="1x1a8MMUSv", password="kvAt89FidK", port="3306", database="1x1a8MMUSv")
